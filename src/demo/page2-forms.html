@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Page 2 - Forms & Validation</title>
+  <link rel="stylesheet" href="forms.css">
+  <link rel="stylesheet" href="navigation.css">
+  <link rel="stylesheet" href="buttons.css">
+  <style>
+    body { font-family: sans-serif; background: #f4f4f8; margin: 0; }
+    .page-title { font-size: 22px; font-weight: 700; color: #111; margin-bottom: 4px; }
+    .page-sub { font-size: 13px; color: #888; margin-bottom: 40px; }
+    .container { padding: 48px; }
+    section { background: white; border-radius: 8px; padding: 32px; margin-bottom: 24px; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+    .section-title { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #999; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid #eee; }
+    .field { display: flex; flex-direction: column; margin-bottom: 20px; max-width: 360px; }
+    .field-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .state-label { font-size: 11px; color: #bbb; margin-bottom: 12px; margin-top: 8px; }
+    .hint { font-size: 11px; color: #aaa; margin-top: 4px; }
+  </style>
+</head>
+<body>
+
+  <nav class="ds-navbar">
+    <div class="ds-navbar__logo">Demo Website</div>
+    <a class="ds-navbar__link" href="page1-buttons.html">Home</a>
+    <a class="ds-navbar__link ds-navbar__link--active">Forms</a>
+    <a class="ds-navbar__link" href="page3-cards.html">Help</a>
+  </nav>
+
+  <div class="container">
+    <div class="page-title">Page 2 — Forms</div>
+    <div class="page-sub">Text fields with validation and dropdowns</div>
+
+    <section>
+      <div class="section-title">Text Field — Live Validation</div>
+
+      <div class="field-grid">
+
+        <div class="field">
+          <label class="ds-text-field__label" for="email">Email Address</label>
+          <input class="ds-text-field__input" id="email" type="text" placeholder="e.g. john@gmail.com">
+          <span class="ds-text-field__error-msg" id="email-error" style="display:none">Must be a valid email (gmail.com, yahoo.com, outlook.com)</span>
+          <!-- <span class="hint">Try: john@gmail.com ✓ or "johngmail" ✗</span> -->
+        </div>
+
+        <div class="field">
+          <label class="ds-text-field__label" for="phone">Phone Number</label>
+          <input class="ds-text-field__input" id="phone" type="text" placeholder="e.g. 9876543210">
+          <span class="ds-text-field__error-msg" id="phone-error" style="display:none">Must be exactly 10 digits</span>
+          <!-- <span class="hint">must be 10 numbers, e.g. 9876543210 </span> -->
+        </div>
+
+        <div class="field">
+          <label class="ds-text-field__label" for="firstname">First Name</label>
+          <input class="ds-text-field__input" id="firstname" type="text" placeholder="Enter first name">
+          <span class="ds-text-field__error-msg" id="firstname-error" style="display:none">First name cannot be empty</span>
+          <!-- <span class="hint">Leave blank and click away ✗</span> -->
+        </div>
+
+        <div class="field">
+          <label class="ds-text-field__label" for="lastname">Last Name</label>
+          <input class="ds-text-field__input" id="lastname" type="text" placeholder="Enter last name">
+          <span class="ds-text-field__error-msg" id="lastname-error" style="display:none">Last name cannot be empty</span>
+          <!-- <span class="hint">Leave blank and click away ✗</span> -->
+        </div>
+
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title">Dropdown</div>
+      <div class="field-grid">
+        <div class="field">
+          <label class="ds-text-field__label" for="country">Country</label>
+          <select class="ds-dropdown__box" id="country">
+            <option value="">Select country</option>
+            <option>India</option>
+            <option>USA</option>
+            <option>UK</option>
+          </select>
+          <span class="ds-text-field__error-msg" id="country-error" style="display:none">Please select a country</span>
+        </div>
+        <div class="field">
+          <label class="ds-text-field__label" for="dept">Department</label>
+          <select class="ds-dropdown__box" id="dept">
+            <option value="">Select department</option>
+            <option>Engineering</option>
+            <option>Design</option>
+            <option>Product</option>
+          </select>
+          <span class="ds-text-field__error-msg" id="dept-error" style="display:none">Please select a department</span>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <script>
+    const emailInput = document.getElementById('email');
+    const emailError = document.getElementById('email-error');
+    const validDomains = ['gmail.com', 'yahoo.com', 'outlook.com', 'hotmail.com', 'sinhgad.edu'];
+
+    emailInput.addEventListener('blur', () => {
+      const val = emailInput.value.trim();
+      const parts = val.split('@');
+      const isValid = parts.length === 2 && validDomains.includes(parts[1]);
+
+      if (val === '') {
+        emailInput.className = 'ds-text-field__input';
+        emailError.style.display = 'none';
+      } else if (isValid) {
+        emailInput.className = 'ds-text-field__input ds-text-field__input--success';
+        emailError.style.display = 'none';
+      } else {
+        emailInput.className = 'ds-text-field__input ds-text-field__input--error';
+        emailError.style.display = 'block';
+      }
+    });
+
+    const phoneInput = document.getElementById('phone');
+    const phoneError = document.getElementById('phone-error');
+
+    phoneInput.addEventListener('blur', () => {
+      const val = phoneInput.value.trim();
+      const isValid = /^\d{10}$/.test(val);
+
+      if (val === '') {
+        phoneInput.className = 'ds-text-field__input';
+        phoneError.style.display = 'none';
+      } else if (isValid) {
+        phoneInput.className = 'ds-text-field__input ds-text-field__input--success';
+        phoneError.style.display = 'none';
+      } else {
+        phoneInput.className = 'ds-text-field__input ds-text-field__input--error';
+        phoneError.style.display = 'block';
+      }
+    });
+
+    const firstnameInput = document.getElementById('firstname');
+    const firstnameError = document.getElementById('firstname-error');
+
+    firstnameInput.addEventListener('blur', () => {
+      const val = firstnameInput.value.trim();
+      if (val === '') {
+        firstnameInput.className = 'ds-text-field__input ds-text-field__input--error';
+        firstnameError.style.display = 'block';
+      } else {
+        firstnameInput.className = 'ds-text-field__input ds-text-field__input--success';
+        firstnameError.style.display = 'none';
+      }
+    });
+
+    const lastnameInput = document.getElementById('lastname');
+    const lastnameError = document.getElementById('lastname-error');
+
+    lastnameInput.addEventListener('blur', () => {
+      const val = lastnameInput.value.trim();
+      if (val === '') {
+        lastnameInput.className = 'ds-text-field__input ds-text-field__input--error';
+        lastnameError.style.display = 'block';
+      } else {
+        lastnameInput.className = 'ds-text-field__input ds-text-field__input--success';
+        lastnameError.style.display = 'none';
+      }
+    });
+
+    const countrySelect = document.getElementById('country');
+    const countryError = document.getElementById('country-error');
+
+    countrySelect.addEventListener('blur', () => {
+      if (!countrySelect.value) {
+        countrySelect.className = 'ds-dropdown__box ds-dropdown__box--error';
+        countryError.style.display = 'block';
+      } else {
+        countrySelect.className = 'ds-dropdown__box';
+        countryError.style.display = 'none';
+      }
+    });
+
+    const deptSelect = document.getElementById('dept');
+    const deptError = document.getElementById('dept-error');
+
+    deptSelect.addEventListener('blur', () => {
+      if (!deptSelect.value) {
+        deptSelect.className = 'ds-dropdown__box ds-dropdown__box--error';
+        deptError.style.display = 'block';
+      } else {
+        deptSelect.className = 'ds-dropdown__box';
+        deptError.style.display = 'none';
+      }
+    });
+  </script>
+
+</body>
+</html>

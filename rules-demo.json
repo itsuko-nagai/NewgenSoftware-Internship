@@ -1,0 +1,82 @@
+[
+  {
+    "Component": "Primary Button",
+    "Element": "Button",
+    "Selector": ".ds-btn--primary",
+    "State": "Default",
+    "Property": "background-color",
+    "Value": "var(--Surface-Brand, #2563eb)"
+  },
+  {
+    "Component": "Primary Button",
+    "Element": "Button",
+    "Selector": ".ds-btn--primary:hover",
+    "State": "Hover",
+    "Property": "background-color",
+    "Value": "var(--Surface-Brand-Hover, #1d4ed8)"
+  },
+  {
+    "Component": "Secondary Button",
+    "Element": "Button",
+    "Selector": ".ds-btn--secondary",
+    "State": "Default",
+    "Property": "color",
+    "Value": "var(--Text-Brand, #2563eb)"
+  },
+  {
+    "Component": "Text Field",
+    "Element": "Label",
+    "Selector": ".ds-text-field__label",
+    "State": "Default",
+    "Property": "color",
+    "Value": "var(--Text-Primary, #001111)"
+  },
+  {
+    "Component": "Text Field",
+    "Element": "Input Box",
+    "Selector": ".ds-text-field__input--error",
+    "State": "Error",
+    "Property": "border-color",
+    "Value": "var(--Stroke-Error, #BB1122)"
+  },
+  {
+    "Component": "Dropdown",
+    "Element": "Dropdown Box",
+    "Selector": ".ds-dropdown__box",
+    "State": "Default",
+    "Property": "border-radius",
+    "Value": "4px"
+  },
+  {
+    "Component": "Card Header",
+    "Element": "Card Heading Text",
+    "Selector": ".ds-card__heading",
+    "State": "Default",
+    "Property": "color",
+    "Value": "var(--Text-Primary, #111827)"
+  },
+  {
+    "Component": "Header",
+    "Element": "Background",
+    "Selector": ".ds-navbar",
+    "State": "Default",
+    "Property": "background-color",
+    "Value": "var(--Surface-Brand, #2563eb)"
+  },
+  {
+    "Component": "Horizontal Tab",
+    "Element": "Active Tab",
+    "Selector": ".ds-tab__item--active",
+    "State": "Default",
+    "Property": "color",
+    "Value": "var(--Text-Brand, #2563eb)"
+  },
+  {
+    "Component": "Horizontal Tab",
+    "Element": "Active Tab",
+    "Selector": ".ds-tab__item--active",
+    "State": "Default",
+    "Property": "border-bottom",
+    "Value": "2px solid var(--Stroke-Brand, #2563eb)"
+  }
+]

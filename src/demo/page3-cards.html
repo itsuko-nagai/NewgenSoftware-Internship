@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Page 3 - Cards</title>
+  <link rel="stylesheet" href="cards.css">
+  <link rel="stylesheet" href="buttons.css">
+  <link rel="stylesheet" href="navigation.css">
+  <style>
+    body { font-family: sans-serif; background: #f4f4f8; margin: 0; }
+    .page-title { font-size: 22px; font-weight: 700; color: #111; margin-bottom: 4px; }
+    .page-sub { font-size: 13px; color: #888; margin-bottom: 40px; }
+    .container { padding: 48px; }
+    .card-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    section { margin-bottom: 32px; }
+    .section-title { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #999; margin-bottom: 20px; }
+  </style>
+</head>
+<body>
+
+  <nav class="ds-navbar">
+    <div class="ds-navbar__logo">Demo Website</div>
+    <a class="ds-navbar__link" href="page1-buttons.html">Home</a>
+    <a class="ds-navbar__link" href="page2-forms.html">Forms</a>
+    <a class="ds-navbar__link ds-navbar__link--active">Help</a>
+  </nav>
+
+  <div class="container">
+    <div class="page-title">Page 3 — Cards</div>
+    <div class="page-sub">Card components with navigation</div>
+
+    <section>
+      <div class="section-title">Cards</div>
+      <div class="card-grid">
+
+        <div class="ds-card">
+          <div class="ds-card__heading">Getting Started</div>
+          <div class="ds-card__body">Know more about this Company!</div>
+          <div class="ds-card__footer">
+            <button class="ds-btn--primary">Read More</button>
+          </div>
+        </div>
+
+        <div class="ds-card">
+          <div class="ds-card__heading">Documentation</div>
+          <div class="ds-card__body">Know how this code works!</div>
+          <div class="ds-card__footer">
+            <button class="ds-btn--primary">View Docs</button>
+            <button class="ds-btn--secondary">Download</button>
+          </div>
+        </div>
+
+        <div class="ds-card">
+          <div class="ds-card__heading">Support</div>
+          <div class="ds-card__body">If you need help, contact us!</div>
+          <div class="ds-card__footer">
+            <button class="ds-btn--secondary">Contact Us</button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </div>
+</body>
+</html>

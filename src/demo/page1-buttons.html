@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Page 1 - Buttons & Navigation</title>
+  <link rel="stylesheet" href="buttons.css">
+  <link rel="stylesheet" href="navigation.css">
+  <style>
+    body { font-family: sans-serif; background: #f4f4f8; margin: 0; }
+    .page-title { font-size: 22px; font-weight: 700; color: #111; margin-bottom: 4px; }
+    .page-sub { font-size: 13px; color: #888; margin-bottom: 40px; }
+    .container { padding: 48px; }
+    section { background: white; border-radius: 8px; padding: 32px; margin-bottom: 24px; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+    .section-title { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #999; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid #eee; }
+    .row { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; margin-bottom: 12px; }
+    .state-label { font-size: 11px; color: #bbb; margin-bottom: 8px; }
+    .tab-content { display: none; padding: 16px 0; font-size: 14px; color: #555; line-height: 1.6; }
+    .tab-content.active { display: block; }
+  </style>
+</head>
+<body>
+
+  <nav class="ds-navbar">
+    <div class="ds-navbar__logo">Demo Website</div>
+    <a class="ds-navbar__link ds-navbar__link--active">Home</a>
+    <a class="ds-navbar__link" href="page2-forms.html">Forms</a>
+    <a class="ds-navbar__link" href="page3-cards.html">Help</a>
+  </nav>
+
+  <div class="container">
+    <div class="page-title">Page 1 — Buttons</div>
+    <div class="page-sub">Primary button, Secondary button, Navigation bar, Tabs</div>
+
+    <!------------------- TABS ------------------------>
+    <section>
+      <div class="section-title">Tabs</div>
+      <div class="ds-tabs">
+        <div class="ds-tab__item ds-tab__item--active" onclick="switchTab('overview', this)">Overview</div>
+        <div class="ds-tab__item" onclick="switchTab('details', this)">Details</div>
+        <div class="ds-tab__item" onclick="switchTab('settings', this)">Settings</div>
+        <div class="ds-tab__item" onclick="switchTab('history', this)">History</div>
+      </div>
+      <div class="tab-content active" id="tab-overview">
+        This is the <strong>Overview</strong> tab.
+      </div>
+      <div class="tab-content" id="tab-details">
+        This is the <strong>Details</strong> tab.
+      </div>
+      <div class="tab-content" id="tab-settings">
+        This is the <strong>Settings</strong> tab.
+      </div>
+      <div class="tab-content" id="tab-history">
+        This is the <strong>History</strong> tab.
+      </div>
+    </section>
+
+    <!------------------- PRIMARY BUTTON ----------------------->
+    <section>
+      <div class="section-title">Primary Button</div>
+      <div class="state-label">Default</div>
+      <div class="row">
+        <button class="ds-btn--primary">Submit</button>
+        <button class="ds-btn--primary">Save Changes</button>
+      </div>
+      <div class="state-label">Disabled</div>
+      <div class="row">
+        <button class="ds-btn--primary" disabled>Submit</button>
+      </div>
+    </section>
+
+    <!------------------- SECONDARY BUTTON ----------------------->
+    <section>
+      <div class="section-title">Secondary Button</div>
+      <div class="state-label">Default</div>
+      <div class="row">
+        <button class="ds-btn--secondary">Cancel</button>
+        <button class="ds-btn--secondary">Go Back</button>
+      </div>
+      <div class="state-label">Disabled</div>
+      <div class="row">
+        <button class="ds-btn--secondary" disabled>Cancel</button>
+      </div>
+    </section>
+
+  </div>
+
+  <script>
+    function switchTab(tabName, clickedTab) {
+      document.querySelectorAll('.ds-tab__item').forEach(t => {
+        t.classList.remove('ds-tab__item--active');
+      });
+
+      document.querySelectorAll('.tab-content').forEach(c => {
+        c.classList.remove('active');
+      });
+
+      clickedTab.classList.add('ds-tab__item--active');
+      document.getElementById('tab-' + tabName).classList.add('active');
+    }
+  </script>
+
+</body>
+</html>

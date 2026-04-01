@@ -1,0 +1,36 @@
+/* ===== CARD CONTAINER ===== */
+.ds-card {
+  background-color: #ffffff;
+  border-radius: 4px;
+  border: 1px solid #eeeeee;
+  padding-left: 24px;
+  padding-right: 24px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+}
+
+/* ===== CARD HEADER ===== */
+.ds-card__heading {
+  font-size: 16px;
+  font-weight: 600;
+  color: #FF0000;
+  margin-bottom: 8px;
+}
+
+/* ===== CARD BODY ===== */
+.ds-card__body {
+  font-size: 14px;
+  color: #666666;
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+/* ===== CARD FOOTER ===== */
+.ds-card__footer {
+  border-top: 1px solid #eeeeee;
+  padding-top: 16px;
+  text-align: left;
+  display: flex;
+  gap: 8px;
+}

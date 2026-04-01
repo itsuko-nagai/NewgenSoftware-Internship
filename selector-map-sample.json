@@ -1,0 +1,67 @@
+[
+  {
+    "Component": "Text Field",
+    "Element": "Label",
+    "Selector": ".ds-text-field__label"
+  },
+  {
+    "Component": "Text Field",
+    "Element": "Input Box",
+    "Selector": ".ds-text-field__input"
+  },
+  {
+    "Component": "Text Field",
+    "Element": "Placeholder Text",
+    "Selector": ".ds-text-field__input::placeholder"
+  },
+  {
+    "Component": "Primary Button",
+    "Element": "Button",
+    "Selector": ".ds-btn--primary"
+  },
+  {
+    "Component": "Primary Button",
+    "Element": "Button Text",
+    "Selector": ".ds-btn--primary .ds-btn__label"
+  },
+  {
+    "Component": "Secondary Button - Regular",
+    "Element": "Button",
+    "Selector": ".ds-btn--secondary"
+  },
+  {
+    "Component": "Dropdown",
+    "Element": "Dropdown Box",
+    "Selector": ".ds-dropdown__box"
+  },
+  {
+    "Component": "Dropdown",
+    "Element": "Option",
+    "Selector": ".ds-dropdown__option"
+  },
+  {
+    "Component": "Modal",
+    "Element": "Modal Container",
+    "Selector": ".ds-modal__container"
+  },
+  {
+    "Component": "Modal",
+    "Element": "Modal Header",
+    "Selector": ".ds-modal__header"
+  },
+  {
+    "Component": "Modal",
+    "Element": "Modal Footer",
+    "Selector": ".ds-modal__footer"
+  },
+  {
+    "Component": "Table",
+    "Element": "Header Cell",
+    "Selector": ".ds-table__header-cell"
+  },
+  {
+    "Component": "Table",
+    "Element": "Row",
+    "Selector": ".ds-table__row"
+  }
+]
