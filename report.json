@@ -1,0 +1,748 @@
+{
+  "meta": {
+    "generatedAt": "2026-05-01T10:13:38.552Z",
+    "target": "/mnt/c/Users/anayd/design-audit/src/demo",
+    "mode": "directory",
+    "stylesFolder": "src/demo/styles/navigation.css, src/demo/styles/forms.css, src/demo/styles/cards.css, src/demo/styles/buttons.css",
+    "totalHTMLFiles": 3,
+    "totalCSSFiles": 4,
+    "totalIssues": 63,
+    "activeSelectorsFound": 7,
+    "summary": {
+      "invalid-design-class": 36,
+      "design-token-mismatch": 10,
+      "rtl-directional-property": 16,
+      "rtl-text-align": 1
+    }
+  },
+  "activeSelectors": [
+    {
+      "selector": ".ds-navbar",
+      "elementIds": [
+        "#main-navbar"
+      ],
+      "count": 3,
+      "file": "/mnt/c/Users/anayd/design-audit/src/demo/page3-cards.html"
+    },
+    {
+      "selector": ".ds-card__heading",
+      "elementIds": [
+        "#card-1-heading",
+        "#card-2-heading",
+        "#card-3-heading"
+      ],
+      "count": 3,
+      "file": "/mnt/c/Users/anayd/design-audit/src/demo/page3-cards.html"
+    },
+    {
+      "selector": ".ds-btn--primary",
+      "elementIds": [
+        "#btn-read-more",
+        "#btn-view-docs",
+        "#btn-submit",
+        "#btn-save",
+        "#btn-new-demo",
+        "#btn-submit-disabled"
+      ],
+      "count": 6,
+      "file": "/mnt/c/Users/anayd/design-audit/src/demo/page3-cards.html"
+    },
+    {
+      "selector": ".ds-btn--secondary",
+      "elementIds": [
+        "#btn-download",
+        "#btn-contact",
+        "#btn-cancel",
+        "#btn-back",
+        "#btn-cancel-disabled"
+      ],
+      "count": 5,
+      "file": "/mnt/c/Users/anayd/design-audit/src/demo/page3-cards.html"
+    },
+    {
+      "selector": ".ds-text-field__label",
+      "elementIds": [
+        "#label-email",
+        "#label-phone",
+        "#label-firstname",
+        "#label-lastname",
+        "#label-country",
+        "#label-dept"
+      ],
+      "count": 6,
+      "file": "/mnt/c/Users/anayd/design-audit/src/demo/page2-forms.html"
+    },
+    {
+      "selector": ".ds-dropdown__box",
+      "elementIds": [
+        "#input-country",
+        "#input-dept"
+      ],
+      "count": 2,
+      "file": "/mnt/c/Users/anayd/design-audit/src/demo/page2-forms.html"
+    },
+    {
+      "selector": ".ds-tab__item",
+      "elementIds": [
+        "#tab-overview",
+        "#tab-details",
+        "#tab-settings",
+        "#tab-history"
+      ],
+      "count": 4,
+      "file": "/mnt/c/Users/anayd/design-audit/src/demo/page1-buttons.html"
+    }
+  ],
+  "issues": [
+    {
+      "file": "/mnt/c/Users/anayd/design-audit/src/demo/page1-buttons.html",
+      "type": "invalid-design-class",
+      "severity": "warning",
+      "found": "ds-navbar__link--active",
+      "selector": ".ds-navbar__link--active",
+      "elementId": "#nav-home",
+      "message": "\"ds-navbar__link--active\" starts with ds- but is not a known design system class (on element #nav-home)"
+    },
+    {
+      "file": "/mnt/c/Users/anayd/design-audit/src/demo/page1-buttons.html",
+      "type": "invalid-design-class",
+      "severity": "warning",
+      "found": "ds-navbar__link",
+      "selector": ".ds-navbar__link",
+      "elementId": "#nav-forms",
+      "message": "\"ds-navbar__link\" starts with ds- but is not a known design system class (on element #nav-forms)"
+    },
+    {
+      "file": "/mnt/c/Users/anayd/design-audit/src/demo/page1-buttons.html",
+      "type": "invalid-design-class",
+      "severity": "warning",
+      "found": "ds-navbar__link",
+      "selector": ".ds-navbar__link",
+      "elementId": "#nav-help",
+      "message": "\"ds-navbar__link\" starts with ds- but is not a known design system class (on element #nav-help)"
+    },
+    {
+      "file": "/mnt/c/Users/anayd/design-audit/src/demo/page1-buttons.html",
+      "type": "invalid-design-class",
+      "severity": "warning",
+      "found": "ds-navbar__link",
+      "selector": ".ds-navbar__link",
+      "elementId": "#nav-home",
+      "message": "\"ds-navbar__link\" starts with ds- but is not a known design system class (on element #nav-home)"
+    },
+    {
+      "file": "/mnt/c/Users/anayd/design-audit/src/demo/page1-buttons.html",
+      "type": "invalid-design-class",
+      "severity": "warning",
+      "found": "ds-navbar__logo",
+      "selector": ".ds-navbar__logo",
+      "elementId": "#nav-logo",
+      "message": "\"ds-navbar__logo\" starts with ds- but is not a known design system class (on element #nav-logo)"
+    },
+    {
+      "file": "/mnt/c/Users/anayd/design-audit/src/demo/page1-buttons.html",
+      "type": "invalid-design-class",
+      "severity": "warning",
+      "found": "ds-tab__item--active",
+      "selector": ".ds-tab__item--active",
+      "elementId": "#tab-overview",
+      "message": "\"ds-tab__item--active\" starts with ds- but is not a known design system class (on element #tab-overview)"
+    },
+    {
+      "file": "/mnt/c/Users/anayd/design-audit/src/demo/page1-buttons.html",
+      "type": "invalid-design-class",
+      "severity": "warning",
+      "found": "ds-tabs",
+      "selector": ".ds-tabs",
+      "elementId": "#main-tabs",
+      "message": "\"ds-tabs\" starts with ds- but is not a known design system class (on element #main-tabs)"
+    },
+    {
+      "file": "/mnt/c/Users/anayd/design-audit/src/demo/page2-forms.html",
+      "type": "invalid-design-class",
+      "severity": "warning",
+      "found": "ds-navbar__link--active",
+      "selector": ".ds-navbar__link--active",
+      "elementId": "#nav-forms",
+      "message": "\"ds-navbar__link--active\" starts with ds- but is not a known design system class (on element #nav-forms)"
+    },
+    {
+      "file": "/mnt/c/Users/anayd/design-audit/src/demo/page2-forms.html",
+      "type": "invalid-design-class",
+      "severity": "warning",
+      "found": "ds-navbar__link",
+      "selector": ".ds-navbar__link",
+      "elementId": "#nav-forms",
+      "message": "\"ds-navbar__link\" starts with ds- but is not a known design system class (on element #nav-forms)"
+    },
+    {
+      "file": "/mnt/c/Users/anayd/design-audit/src/demo/page2-forms.html",
+      "type": "invalid-design-class",
+      "severity": "warning",
+      "found": "ds-navbar__link",
+      "selector": ".ds-navbar__link",
+      "elementId": "#nav-help",
+      "message": "\"ds-navbar__link\" starts with ds- but is not a known design system class (on element #nav-help)"
+    },
+    {
+      "file": "/mnt/c/Users/anayd/design-audit/src/demo/page2-forms.html",
+      "type": "invalid-design-class",
+      "severity": "warning",
+      "found": "ds-navbar__link",
+      "selector": ".ds-navbar__link",
+      "elementId": "#nav-home",
+      "message": "\"ds-navbar__link\" starts with ds- but is not a known design system class (on element #nav-home)"
+    },
+    {
+      "file": "/mnt/c/Users/anayd/design-audit/src/demo/page2-forms.html",
+      "type": "invalid-design-class",
+      "severity": "warning",
+      "found": "ds-navbar__logo",
+      "selector": ".ds-navbar__logo",
+      "elementId": "#nav-logo",
+      "message": "\"ds-navbar__logo\" starts with ds- but is not a known design system class (on element #nav-logo)"
+    },
+    {
+      "file": "/mnt/c/Users/anayd/design-audit/src/demo/page2-forms.html",
+      "type": "invalid-design-class",
+      "severity": "warning",
+      "found": "ds-text-field__error-msg",
+      "selector": ".ds-text-field__error-msg",
+      "elementId": "#country-error",
+      "message": "\"ds-text-field__error-msg\" starts with ds- but is not a known design system class (on element #country-error)"
+    },
+    {
+      "file": "/mnt/c/Users/anayd/design-audit/src/demo/page2-forms.html",
+      "type": "invalid-design-class",
+      "severity": "warning",
+      "found": "ds-text-field__error-msg",
+      "selector": ".ds-text-field__error-msg",
+      "elementId": "#dept-error",
+      "message": "\"ds-text-field__error-msg\" starts with ds- but is not a known design system class (on element #dept-error)"
+    },
+    {
+      "file": "/mnt/c/Users/anayd/design-audit/src/demo/page2-forms.html",
+      "type": "invalid-design-class",
+      "severity": "warning",
+      "found": "ds-text-field__error-msg",
+      "selector": ".ds-text-field__error-msg",
+      "elementId": "#email-error",
+      "message": "\"ds-text-field__error-msg\" starts with ds- but is not a known design system class (on element #email-error)"
+    },
+    {
+      "file": "/mnt/c/Users/anayd/design-audit/src/demo/page2-forms.html",
+      "type": "invalid-design-class",
+      "severity": "warning",
+      "found": "ds-text-field__error-msg",
+      "selector": ".ds-text-field__error-msg",
+      "elementId": "#firstname-error",
+      "message": "\"ds-text-field__error-msg\" starts with ds- but is not a known design system class (on element #firstname-error)"
+    },
+    {
+      "file": "/mnt/c/Users/anayd/design-audit/src/demo/page2-forms.html",
+      "type": "invalid-design-class",
+      "severity": "warning",
+      "found": "ds-text-field__error-msg",
+      "selector": ".ds-text-field__error-msg",
+      "elementId": "#lastname-error",
+      "message": "\"ds-text-field__error-msg\" starts with ds- but is not a known design system class (on element #lastname-error)"
+    },
+    {
+      "file": "/mnt/c/Users/anayd/design-audit/src/demo/page2-forms.html",
+      "type": "invalid-design-class",
+      "severity": "warning",
+      "found": "ds-text-field__error-msg",
+      "selector": ".ds-text-field__error-msg",
+      "elementId": "#phone-error",
+      "message": "\"ds-text-field__error-msg\" starts with ds- but is not a known design system class (on element #phone-error)"
+    },
+    {
+      "file": "/mnt/c/Users/anayd/design-audit/src/demo/page2-forms.html",
+      "type": "invalid-design-class",
+      "severity": "warning",
+      "found": "ds-text-field__input",
+      "selector": ".ds-text-field__input",
+      "elementId": "#input-email",
+      "message": "\"ds-text-field__input\" starts with ds- but is not a known design system class (on element #input-email)"
+    },
+    {
+      "file": "/mnt/c/Users/anayd/design-audit/src/demo/page2-forms.html",
+      "type": "invalid-design-class",
+      "severity": "warning",
+      "found": "ds-text-field__input",
+      "selector": ".ds-text-field__input",
+      "elementId": "#input-firstname",
+      "message": "\"ds-text-field__input\" starts with ds- but is not a known design system class (on element #input-firstname)"
+    },
+    {
+      "file": "/mnt/c/Users/anayd/design-audit/src/demo/page2-forms.html",
+      "type": "invalid-design-class",
+      "severity": "warning",
+      "found": "ds-text-field__input",
+      "selector": ".ds-text-field__input",
+      "elementId": "#input-lastname",
+      "message": "\"ds-text-field__input\" starts with ds- but is not a known design system class (on element #input-lastname)"
+    },
+    {
+      "file": "/mnt/c/Users/anayd/design-audit/src/demo/page2-forms.html",
+      "type": "invalid-design-class",
+      "severity": "warning",
+      "found": "ds-text-field__input",
+      "selector": ".ds-text-field__input",
+      "elementId": "#input-phone",
+      "message": "\"ds-text-field__input\" starts with ds- but is not a known design system class (on element #input-phone)"
+    },
+    {
+      "file": "/mnt/c/Users/anayd/design-audit/src/demo/page3-cards.html",
+      "type": "invalid-design-class",
+      "severity": "warning",
+      "found": "ds-card__body",
+      "selector": ".ds-card__body",
+      "elementId": "#card-1-body",
+      "message": "\"ds-card__body\" starts with ds- but is not a known design system class (on element #card-1-body)"
+    },
+    {
+      "file": "/mnt/c/Users/anayd/design-audit/src/demo/page3-cards.html",
+      "type": "invalid-design-class",
+      "severity": "warning",
+      "found": "ds-card__body",
+      "selector": ".ds-card__body",
+      "elementId": "#card-2-body",
+      "message": "\"ds-card__body\" starts with ds- but is not a known design system class (on element #card-2-body)"
+    },
+    {
+      "file": "/mnt/c/Users/anayd/design-audit/src/demo/page3-cards.html",
+      "type": "invalid-design-class",
+      "severity": "warning",
+      "found": "ds-card__body",
+      "selector": ".ds-card__body",
+      "elementId": "#card-3-body",
+      "message": "\"ds-card__body\" starts with ds- but is not a known design system class (on element #card-3-body)"
+    },
+    {
+      "file": "/mnt/c/Users/anayd/design-audit/src/demo/page3-cards.html",
+      "type": "invalid-design-class",
+      "severity": "warning",
+      "found": "ds-card__footer",
+      "selector": ".ds-card__footer",
+      "elementId": "#card-1-footer",
+      "message": "\"ds-card__footer\" starts with ds- but is not a known design system class (on element #card-1-footer)"
+    },
+    {
+      "file": "/mnt/c/Users/anayd/design-audit/src/demo/page3-cards.html",
+      "type": "invalid-design-class",
+      "severity": "warning",
+      "found": "ds-card__footer",
+      "selector": ".ds-card__footer",
+      "elementId": "#card-2-footer",
+      "message": "\"ds-card__footer\" starts with ds- but is not a known design system class (on element #card-2-footer)"
+    },
+    {
+      "file": "/mnt/c/Users/anayd/design-audit/src/demo/page3-cards.html",
+      "type": "invalid-design-class",
+      "severity": "warning",
+      "found": "ds-card__footer",
+      "selector": ".ds-card__footer",
+      "elementId": "#card-3-footer",
+      "message": "\"ds-card__footer\" starts with ds- but is not a known design system class (on element #card-3-footer)"
+    },
+    {
+      "file": "/mnt/c/Users/anayd/design-audit/src/demo/page3-cards.html",
+      "type": "invalid-design-class",
+      "severity": "warning",
+      "found": "ds-card",
+      "selector": ".ds-card",
+      "elementId": "#card-1",
+      "message": "\"ds-card\" starts with ds- but is not a known design system class (on element #card-1)"
+    },
+    {
+      "file": "/mnt/c/Users/anayd/design-audit/src/demo/page3-cards.html",
+      "type": "invalid-design-class",
+      "severity": "warning",
+      "found": "ds-card",
+      "selector": ".ds-card",
+      "elementId": "#card-2",
+      "message": "\"ds-card\" starts with ds- but is not a known design system class (on element #card-2)"
+    },
+    {
+      "file": "/mnt/c/Users/anayd/design-audit/src/demo/page3-cards.html",
+      "type": "invalid-design-class",
+      "severity": "warning",
+      "found": "ds-card",
+      "selector": ".ds-card",
+      "elementId": "#card-3",
+      "message": "\"ds-card\" starts with ds- but is not a known design system class (on element #card-3)"
+    },
+    {
+      "file": "/mnt/c/Users/anayd/design-audit/src/demo/page3-cards.html",
+      "type": "invalid-design-class",
+      "severity": "warning",
+      "found": "ds-navbar__link--active",
+      "selector": ".ds-navbar__link--active",
+      "elementId": "#nav-help",
+      "message": "\"ds-navbar__link--active\" starts with ds- but is not a known design system class (on element #nav-help)"
+    },
+    {
+      "file": "/mnt/c/Users/anayd/design-audit/src/demo/page3-cards.html",
+      "type": "invalid-design-class",
+      "severity": "warning",
+      "found": "ds-navbar__link",
+      "selector": ".ds-navbar__link",
+      "elementId": "#nav-forms",
+      "message": "\"ds-navbar__link\" starts with ds- but is not a known design system class (on element #nav-forms)"
+    },
+    {
+      "file": "/mnt/c/Users/anayd/design-audit/src/demo/page3-cards.html",
+      "type": "invalid-design-class",
+      "severity": "warning",
+      "found": "ds-navbar__link",
+      "selector": ".ds-navbar__link",
+      "elementId": "#nav-help",
+      "message": "\"ds-navbar__link\" starts with ds- but is not a known design system class (on element #nav-help)"
+    },
+    {
+      "file": "/mnt/c/Users/anayd/design-audit/src/demo/page3-cards.html",
+      "type": "invalid-design-class",
+      "severity": "warning",
+      "found": "ds-navbar__link",
+      "selector": ".ds-navbar__link",
+      "elementId": "#nav-home",
+      "message": "\"ds-navbar__link\" starts with ds- but is not a known design system class (on element #nav-home)"
+    },
+    {
+      "file": "/mnt/c/Users/anayd/design-audit/src/demo/page3-cards.html",
+      "type": "invalid-design-class",
+      "severity": "warning",
+      "found": "ds-navbar__logo",
+      "selector": ".ds-navbar__logo",
+      "elementId": "#nav-logo",
+      "message": "\"ds-navbar__logo\" starts with ds- but is not a known design system class (on element #nav-logo)"
+    },
+    {
+      "file": "/mnt/c/Users/anayd/design-audit/src/demo/styles/buttons.css",
+      "type": "design-token-mismatch",
+      "severity": "error",
+      "component": "Primary Button",
+      "element": "Button",
+      "selector": ".ds-btn--primary",
+      "state": "Default",
+      "property": "background-color",
+      "expected": "var(--Surface-Brand, #2563eb)",
+      "found": "#FF0000",
+      "elementId": "#btn-read-more",
+      "message": "[Primary Button / Button] \"background-color\" expected \"var(--Surface-Brand, #2563eb)\", found \"#FF0000\" [used 6x in HTML, ids: #btn-read-more, #btn-view-docs, #btn-submit, #btn-save, #btn-new-demo, #btn-submit-disabled]",
+      "foundHex": "#ff0000",
+      "expectedHex": "#2563eb"
+    },
+    {
+      "file": "/mnt/c/Users/anayd/design-audit/src/demo/styles/buttons.css",
+      "type": "design-token-mismatch",
+      "severity": "error",
+      "component": "Secondary Button",
+      "element": "Button",
+      "selector": ".ds-btn--secondary",
+      "state": "Default",
+      "property": "color",
+      "expected": "var(--Text-Brand, #2563eb)",
+      "found": "#FF5500",
+      "elementId": "#btn-download",
+      "message": "[Secondary Button / Button] \"color\" expected \"var(--Text-Brand, #2563eb)\", found \"#FF5500\" [used 5x in HTML, ids: #btn-download, #btn-contact, #btn-cancel, #btn-back, #btn-cancel-disabled]",
+      "foundHex": "#ff5500",
+      "expectedHex": "#2563eb"
+    },
+    {
+      "file": "/mnt/c/Users/anayd/design-audit/src/demo/styles/buttons.css",
+      "type": "rtl-directional-property",
+      "severity": "warning",
+      "property": "padding-left",
+      "value": "20px",
+      "line": 33,
+      "suggestion": "padding-inline-start",
+      "message": "\"padding-left\" should be \"padding-inline-start\" for RTL support (line 33)"
+    },
+    {
+      "file": "/mnt/c/Users/anayd/design-audit/src/demo/styles/buttons.css",
+      "type": "rtl-directional-property",
+      "severity": "warning",
+      "property": "padding-left",
+      "value": "20px",
+      "line": 7,
+      "suggestion": "padding-inline-start",
+      "message": "\"padding-left\" should be \"padding-inline-start\" for RTL support (line 7)"
+    },
+    {
+      "file": "/mnt/c/Users/anayd/design-audit/src/demo/styles/buttons.css",
+      "type": "rtl-directional-property",
+      "severity": "warning",
+      "property": "padding-right",
+      "value": "20px",
+      "line": 34,
+      "suggestion": "padding-inline-end",
+      "message": "\"padding-right\" should be \"padding-inline-end\" for RTL support (line 34)"
+    },
+    {
+      "file": "/mnt/c/Users/anayd/design-audit/src/demo/styles/buttons.css",
+      "type": "rtl-directional-property",
+      "severity": "warning",
+      "property": "padding-right",
+      "value": "20px",
+      "line": 8,
+      "suggestion": "padding-inline-end",
+      "message": "\"padding-right\" should be \"padding-inline-end\" for RTL support (line 8)"
+    },
+    {
+      "file": "/mnt/c/Users/anayd/design-audit/src/demo/styles/cards.css",
+      "type": "design-token-mismatch",
+      "severity": "error",
+      "component": "Card Header",
+      "element": "Card Heading Text",
+      "selector": ".ds-card__heading",
+      "state": "Default",
+      "property": "color",
+      "expected": "var(--Text-Primary, #111827)",
+      "found": "#FF0000",
+      "elementId": "#card-1-heading",
+      "message": "[Card Header / Card Heading Text] \"color\" expected \"var(--Text-Primary, #111827)\", found \"#FF0000\" [used 3x in HTML, ids: #card-1-heading, #card-2-heading, #card-3-heading]",
+      "foundHex": "#ff0000",
+      "expectedHex": "#111827"
+    },
+    {
+      "file": "/mnt/c/Users/anayd/design-audit/src/demo/styles/cards.css",
+      "type": "rtl-directional-property",
+      "severity": "warning",
+      "property": "padding-left",
+      "value": "24px",
+      "line": 6,
+      "suggestion": "padding-inline-start",
+      "message": "\"padding-left\" should be \"padding-inline-start\" for RTL support (line 6)"
+    },
+    {
+      "file": "/mnt/c/Users/anayd/design-audit/src/demo/styles/cards.css",
+      "type": "rtl-directional-property",
+      "severity": "warning",
+      "property": "padding-right",
+      "value": "24px",
+      "line": 7,
+      "suggestion": "padding-inline-end",
+      "message": "\"padding-right\" should be \"padding-inline-end\" for RTL support (line 7)"
+    },
+    {
+      "file": "/mnt/c/Users/anayd/design-audit/src/demo/styles/cards.css",
+      "type": "rtl-text-align",
+      "severity": "warning",
+      "property": "text-align",
+      "value": "left",
+      "line": 33,
+      "suggestion": "start",
+      "message": "\"text-align: left\" should be \"text-align: start\" for RTL support (line 33)"
+    },
+    {
+      "file": "/mnt/c/Users/anayd/design-audit/src/demo/styles/forms.css",
+      "type": "design-token-mismatch",
+      "severity": "error",
+      "component": "Dropdown",
+      "element": "Dropdown Box",
+      "selector": ".ds-dropdown__box",
+      "state": "Default",
+      "property": "border-radius",
+      "expected": "4px",
+      "found": "2px",
+      "elementId": "#input-country",
+      "message": "[Dropdown / Dropdown Box] \"border-radius\" expected \"4px\", found \"2px\" [used 2x in HTML, ids: #input-country, #input-dept]"
+    },
+    {
+      "file": "/mnt/c/Users/anayd/design-audit/src/demo/styles/forms.css",
+      "type": "design-token-mismatch",
+      "severity": "error",
+      "component": "Text Field",
+      "element": "Label",
+      "selector": ".ds-text-field__label",
+      "state": "Default",
+      "property": "color",
+      "expected": "var(--Text-Primary, #001111)",
+      "found": "#FF0000",
+      "elementId": "#label-email",
+      "message": "[Text Field / Label] \"color\" expected \"var(--Text-Primary, #001111)\", found \"#FF0000\" [used 6x in HTML, ids: #label-email, #label-phone, #label-firstname, #label-lastname, #label-country, #label-dept]",
+      "foundHex": "#ff0000",
+      "expectedHex": "#001111"
+    },
+    {
+      "file": "/mnt/c/Users/anayd/design-audit/src/demo/styles/forms.css",
+      "type": "rtl-directional-property",
+      "severity": "warning",
+      "property": "padding-left",
+      "value": "12px",
+      "line": 18,
+      "suggestion": "padding-inline-start",
+      "message": "\"padding-left\" should be \"padding-inline-start\" for RTL support (line 18)"
+    },
+    {
+      "file": "/mnt/c/Users/anayd/design-audit/src/demo/styles/forms.css",
+      "type": "rtl-directional-property",
+      "severity": "warning",
+      "property": "padding-left",
+      "value": "2px",
+      "line": 41,
+      "suggestion": "padding-inline-start",
+      "message": "\"padding-left\" should be \"padding-inline-start\" for RTL support (line 41)"
+    },
+    {
+      "file": "/mnt/c/Users/anayd/design-audit/src/demo/styles/forms.css",
+      "type": "rtl-directional-property",
+      "severity": "warning",
+      "property": "padding-left",
+      "value": "12px",
+      "line": 57,
+      "suggestion": "padding-inline-start",
+      "message": "\"padding-left\" should be \"padding-inline-start\" for RTL support (line 57)"
+    },
+    {
+      "file": "/mnt/c/Users/anayd/design-audit/src/demo/styles/forms.css",
+      "type": "rtl-directional-property",
+      "severity": "warning",
+      "property": "padding-left",
+      "value": "2px",
+      "line": 7,
+      "suggestion": "padding-inline-start",
+      "message": "\"padding-left\" should be \"padding-inline-start\" for RTL support (line 7)"
+    },
+    {
+      "file": "/mnt/c/Users/anayd/design-audit/src/demo/styles/forms.css",
+      "type": "rtl-directional-property",
+      "severity": "warning",
+      "property": "padding-right",
+      "value": "12px",
+      "line": 19,
+      "suggestion": "padding-inline-end",
+      "message": "\"padding-right\" should be \"padding-inline-end\" for RTL support (line 19)"
+    },
+    {
+      "file": "/mnt/c/Users/anayd/design-audit/src/demo/styles/forms.css",
+      "type": "rtl-directional-property",
+      "severity": "warning",
+      "property": "padding-right",
+      "value": "12px",
+      "line": 58,
+      "suggestion": "padding-inline-end",
+      "message": "\"padding-right\" should be \"padding-inline-end\" for RTL support (line 58)"
+    },
+    {
+      "file": "/mnt/c/Users/anayd/design-audit/src/demo/styles/navigation.css",
+      "type": "design-token-mismatch",
+      "severity": "error",
+      "component": "Header",
+      "element": "Background",
+      "selector": ".ds-navbar",
+      "state": "Default",
+      "property": "background-color",
+      "expected": "var(--Surface-Brand, #2563eb)",
+      "found": "#FF0000",
+      "elementId": "#main-navbar",
+      "message": "[Header / Background] \"background-color\" expected \"var(--Surface-Brand, #2563eb)\", found \"#FF0000\" [used 3x in HTML, ids: #main-navbar]",
+      "foundHex": "#ff0000",
+      "expectedHex": "#2563eb"
+    },
+    {
+      "file": "/mnt/c/Users/anayd/design-audit/src/demo/styles/navigation.css",
+      "type": "design-token-mismatch",
+      "severity": "error",
+      "component": "Horizontal Tab",
+      "element": "Active Tab",
+      "selector": ".ds-tab__item--active",
+      "state": "Default",
+      "property": "border-bottom",
+      "expected": "2px solid var(--Stroke-Brand, #2563eb)",
+      "found": "2px solid #FF0000",
+      "elementId": "#tab-overview",
+      "message": "[Horizontal Tab / Active Tab] \"border-bottom\" expected \"2px solid var(--Stroke-Brand, #2563eb)\", found \"2px solid #FF0000\" [used 4x in HTML, ids: #tab-overview, #tab-details, #tab-settings, #tab-history]",
+      "expectedHex": "#2563eb"
+    },
+    {
+      "file": "/mnt/c/Users/anayd/design-audit/src/demo/styles/navigation.css",
+      "type": "design-token-mismatch",
+      "severity": "error",
+      "component": "Horizontal Tab",
+      "element": "Active Tab",
+      "selector": ".ds-tab__item",
+      "state": "Default",
+      "property": "border-bottom",
+      "expected": "2px solid var(--Stroke-Brand, #2563eb)",
+      "found": "2px solid transparent",
+      "elementId": "#tab-overview",
+      "message": "[Horizontal Tab / Active Tab] \"border-bottom\" expected \"2px solid var(--Stroke-Brand, #2563eb)\", found \"2px solid transparent\" [used 4x in HTML, ids: #tab-overview, #tab-details, #tab-settings, #tab-history]",
+      "expectedHex": "#2563eb"
+    },
+    {
+      "file": "/mnt/c/Users/anayd/design-audit/src/demo/styles/navigation.css",
+      "type": "design-token-mismatch",
+      "severity": "error",
+      "component": "Horizontal Tab",
+      "element": "Active Tab",
+      "selector": ".ds-tab__item",
+      "state": "Default",
+      "property": "color",
+      "expected": "var(--Text-Brand, #2563eb)",
+      "found": "#999999",
+      "elementId": "#tab-overview",
+      "message": "[Horizontal Tab / Active Tab] \"color\" expected \"var(--Text-Brand, #2563eb)\", found \"#999999\" [used 4x in HTML, ids: #tab-overview, #tab-details, #tab-settings, #tab-history]",
+      "foundHex": "#999999",
+      "expectedHex": "#2563eb"
+    },
+    {
+      "file": "/mnt/c/Users/anayd/design-audit/src/demo/styles/navigation.css",
+      "type": "design-token-mismatch",
+      "severity": "error",
+      "component": "Horizontal Tab",
+      "element": "Active Tab",
+      "selector": ".ds-tab__item--active",
+      "state": "Default",
+      "property": "color",
+      "expected": "var(--Text-Brand, #2563eb)",
+      "found": "#FF0000",
+      "elementId": "#tab-overview",
+      "message": "[Horizontal Tab / Active Tab] \"color\" expected \"var(--Text-Brand, #2563eb)\", found \"#FF0000\" [used 4x in HTML, ids: #tab-overview, #tab-details, #tab-settings, #tab-history]",
+      "foundHex": "#ff0000",
+      "expectedHex": "#2563eb"
+    },
+    {
+      "file": "/mnt/c/Users/anayd/design-audit/src/demo/styles/navigation.css",
+      "type": "rtl-directional-property",
+      "severity": "warning",
+      "property": "padding-left",
+      "value": "24px",
+      "line": 4,
+      "suggestion": "padding-inline-start",
+      "message": "\"padding-left\" should be \"padding-inline-start\" for RTL support (line 4)"
+    },
+    {
+      "file": "/mnt/c/Users/anayd/design-audit/src/demo/styles/navigation.css",
+      "type": "rtl-directional-property",
+      "severity": "warning",
+      "property": "padding-left",
+      "value": "20px",
+      "line": 49,
+      "suggestion": "padding-inline-start",
+      "message": "\"padding-left\" should be \"padding-inline-start\" for RTL support (line 49)"
+    },
+    {
+      "file": "/mnt/c/Users/anayd/design-audit/src/demo/styles/navigation.css",
+      "type": "rtl-directional-property",
+      "severity": "warning",
+      "property": "padding-right",
+      "value": "24px",
+      "line": 5,
+      "suggestion": "padding-inline-end",
+      "message": "\"padding-right\" should be \"padding-inline-end\" for RTL support (line 5)"
+    },
+    {
+      "file": "/mnt/c/Users/anayd/design-audit/src/demo/styles/navigation.css",
+      "type": "rtl-directional-property",
+      "severity": "warning",
+      "property": "padding-right",
+      "value": "20px",
+      "line": 50,
+      "suggestion": "padding-inline-end",
+      "message": "\"padding-right\" should be \"padding-inline-end\" for RTL support (line 50)"
+    }
+  ]
+}
