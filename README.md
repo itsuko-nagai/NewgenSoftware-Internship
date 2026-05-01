@@ -45,6 +45,7 @@ design-audit/
 ├── rules-generated.json        # Rules output from converter
 ├── rules-demo.json             # Sample rules for the demo
 ├── selector-map-sample.json    # Sample selector mapping config
+├── state-map.json              # State suffix mapping (e.g. :hover, .is-disabled)
 └── README.md
 ```
 
@@ -100,14 +101,11 @@ node bin/cli.js scan <targetDir> --rules <rulesPath> --schema <schemaPath> --out
 Example:
 
 ```bash
-node bin/cli.js scan ./src --rules rules.json --schema rules-schema.json --out report.json
-```
-
-To run against the included demo:
-
-```bash
 node bin/cli.js scan ./src/demo --rules rules-demo.json --schema rules-schema.json --out report.json
 ```
+
+#### Style Auto-Detection
+The CLI automatically attempts to find your stylesheets. It looks for `styles/`, `css/`, or `scss/` folders within the target directory or its parent. If found, it validates the rules against all `.css` and `.scss` files in those folders. If no such folders are found, it scans all styles in the target directory recursively.
 
 ---
 
@@ -117,7 +115,9 @@ node bin/cli.js scan ./src/demo --rules rules-demo.json --schema rules-schema.js
 |---|---|---|---|
 | `<targetDir>` | ✅ | — | Directory to scan recursively |
 | `--rules` | ✅ | — | Path to rules JSON array |
+| `--stylesheet` | ❌ | — | Manual path to a CSS/SCSS file or folder (overrides auto-detection) |
 | `--schema` | ❌ | — | Path to rules-schema.json for AJV validation |
+| `--state-map` | ❌ | `./state-map.json` | Path to state suffix mapping config |
 | `--out` | ❌ | `./results.json` | Output path for the report |
 
 ---
