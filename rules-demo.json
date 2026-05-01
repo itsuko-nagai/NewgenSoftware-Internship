@@ -66,7 +66,7 @@
   {
     "Component": "Horizontal Tab",
     "Element": "Active Tab",
-    "Selector": ".ds-tab__item--active",
+    "Selector": ".ds-tab__item",
     "State": "Default",
     "Property": "color",
     "Value": "var(--Text-Brand, #2563eb)"
@@ -74,7 +74,7 @@
   {
     "Component": "Horizontal Tab",
     "Element": "Active Tab",
-    "Selector": ".ds-tab__item--active",
+    "Selector": ".ds-tab__item",
     "State": "Default",
     "Property": "border-bottom",
     "Value": "2px solid var(--Stroke-Brand, #2563eb)"

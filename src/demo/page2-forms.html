@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
   <title>Page 2 - Forms & Validation</title>
-  <link rel="stylesheet" href="forms.css">
-  <link rel="stylesheet" href="navigation.css">
-  <link rel="stylesheet" href="buttons.css">
+  <link rel="stylesheet" href="styles/forms.css">
+  <link rel="stylesheet" href="styles/navigation.css">
+  <link rel="stylesheet" href="styles/buttons.css">
   <style>
     body { font-family: sans-serif; background: #f4f4f8; margin: 0; }
     .page-title { font-size: 22px; font-weight: 700; color: #111; margin-bottom: 4px; }
@@ -20,46 +20,45 @@
 </head>
 <body>
 
-  <nav class="ds-navbar">
-    <div class="ds-navbar__logo">Demo Website</div>
-    <a class="ds-navbar__link" href="page1-buttons.html">Home</a>
-    <a class="ds-navbar__link ds-navbar__link--active">Forms</a>
-    <a class="ds-navbar__link" href="page3-cards.html">Help</a>
+  <nav class="ds-navbar" id="main-navbar">
+    <div class="ds-navbar__logo" id="nav-logo">MyApp</div>
+    <a class="ds-navbar__link" id="nav-home" href="page1-buttons.html">Home</a>
+    <a class="ds-navbar__link ds-navbar__link--active" id="nav-forms">Forms</a>
+    <a class="ds-navbar__link" id="nav-help" href="page3-cards.html">Help</a>
   </nav>
 
   <div class="container">
-    <div class="page-title">Page 2 — Forms</div>
-    <div class="page-sub">Text fields with validation and dropdowns</div>
+    <div class="page-title">Page 2 — Forms & Validation</div>
+    <div class="page-sub">Text fields with live validation, dropdowns</div>
 
     <section>
       <div class="section-title">Text Field — Live Validation</div>
-
       <div class="field-grid">
 
         <div class="field">
-          <label class="ds-text-field__label" for="email">Email Address</label>
-          <input class="ds-text-field__input" id="email" type="text" placeholder="e.g. john@gmail.com">
+          <label class="ds-text-field__label" id="label-email" for="input-email">Email Address</label>
+          <input class="ds-text-field__input" id="input-email" type="text" placeholder="e.g. john@gmail.com">
           <span class="ds-text-field__error-msg" id="email-error" style="display:none">Must be a valid email (gmail.com, yahoo.com, outlook.com)</span>
           <!-- <span class="hint">Try: john@gmail.com ✓ or "johngmail" ✗</span> -->
         </div>
 
-        <div class="field">
-          <label class="ds-text-field__label" for="phone">Phone Number</label>
-          <input class="ds-text-field__input" id="phone" type="text" placeholder="e.g. 9876543210">
+        <div class="field"> 
+          <label class="ds-text-field__label" id="label-phone" for="input-phone">Phone Number</label>
+          <input class="ds-text-field__input" id="input-phone" type="text" placeholder="e.g. 9876543210">
           <span class="ds-text-field__error-msg" id="phone-error" style="display:none">Must be exactly 10 digits</span>
-          <!-- <span class="hint">must be 10 numbers, e.g. 9876543210 </span> -->
+          <!-- <span class="hint">Try: 9876543210 ✓ or "98765" ✗</span> -->
         </div>
 
         <div class="field">
-          <label class="ds-text-field__label" for="firstname">First Name</label>
-          <input class="ds-text-field__input" id="firstname" type="text" placeholder="Enter first name">
+          <label class="ds-text-field__label" id="label-firstname" for="input-firstname">First Name</label>
+          <input class="ds-text-field__input" id="input-firstname" type="text" placeholder="Enter first name">
           <span class="ds-text-field__error-msg" id="firstname-error" style="display:none">First name cannot be empty</span>
           <!-- <span class="hint">Leave blank and click away ✗</span> -->
         </div>
 
         <div class="field">
-          <label class="ds-text-field__label" for="lastname">Last Name</label>
-          <input class="ds-text-field__input" id="lastname" type="text" placeholder="Enter last name">
+          <label class="ds-text-field__label" id="label-lastname" for="input-lastname">Last Name</label>
+          <input class="ds-text-field__input" id="input-lastname" type="text" placeholder="Enter last name">
           <span class="ds-text-field__error-msg" id="lastname-error" style="display:none">Last name cannot be empty</span>
           <!-- <span class="hint">Leave blank and click away ✗</span> -->
         </div>
@@ -71,8 +70,8 @@
       <div class="section-title">Dropdown</div>
       <div class="field-grid">
         <div class="field">
-          <label class="ds-text-field__label" for="country">Country</label>
-          <select class="ds-dropdown__box" id="country">
+          <label class="ds-text-field__label" id="label-country" for="input-country">Country</label>
+          <select class="ds-dropdown__box" id="input-country">
             <option value="">Select country</option>
             <option>India</option>
             <option>USA</option>
@@ -81,8 +80,8 @@
           <span class="ds-text-field__error-msg" id="country-error" style="display:none">Please select a country</span>
         </div>
         <div class="field">
-          <label class="ds-text-field__label" for="dept">Department</label>
-          <select class="ds-dropdown__box" id="dept">
+          <label class="ds-text-field__label" id="label-dept" for="input-dept">Department</label>
+          <select class="ds-dropdown__box" id="input-dept">
             <option value="">Select department</option>
             <option>Engineering</option>
             <option>Design</option>
@@ -96,99 +95,50 @@
   </div>
 
   <script>
-    const emailInput = document.getElementById('email');
-    const emailError = document.getElementById('email-error');
-    const validDomains = ['gmail.com', 'yahoo.com', 'outlook.com', 'hotmail.com', 'sinhgad.edu'];
+    const validDomains = ['gmail.com', 'yahoo.com', 'outlook.com', 'hotmail.com'];
 
-    emailInput.addEventListener('blur', () => {
-      const val = emailInput.value.trim();
+    function validateEmail() {
+      const val = document.getElementById('input-email').value.trim();
+      const input = document.getElementById('input-email');
+      const error = document.getElementById('email-error');
       const parts = val.split('@');
       const isValid = parts.length === 2 && validDomains.includes(parts[1]);
+      if (val === '') { input.className = 'ds-text-field__input'; error.style.display = 'none'; }
+      else if (isValid) { input.className = 'ds-text-field__input ds-text-field__input--success'; error.style.display = 'none'; }
+      else { input.className = 'ds-text-field__input ds-text-field__input--error'; error.style.display = 'block'; }
+    }
 
-      if (val === '') {
-        emailInput.className = 'ds-text-field__input';
-        emailError.style.display = 'none';
-      } else if (isValid) {
-        emailInput.className = 'ds-text-field__input ds-text-field__input--success';
-        emailError.style.display = 'none';
-      } else {
-        emailInput.className = 'ds-text-field__input ds-text-field__input--error';
-        emailError.style.display = 'block';
-      }
-    });
-
-    const phoneInput = document.getElementById('phone');
-    const phoneError = document.getElementById('phone-error');
-
-    phoneInput.addEventListener('blur', () => {
-      const val = phoneInput.value.trim();
+    function validatePhone() {
+      const val = document.getElementById('input-phone').value.trim();
+      const input = document.getElementById('input-phone');
+      const error = document.getElementById('phone-error');
       const isValid = /^\d{10}$/.test(val);
+      if (val === '') { input.className = 'ds-text-field__input'; error.style.display = 'none'; }
+      else if (isValid) { input.className = 'ds-text-field__input ds-text-field__input--success'; error.style.display = 'none'; }
+      else { input.className = 'ds-text-field__input ds-text-field__input--error'; error.style.display = 'block'; }
+    }
 
-      if (val === '') {
-        phoneInput.className = 'ds-text-field__input';
-        phoneError.style.display = 'none';
-      } else if (isValid) {
-        phoneInput.className = 'ds-text-field__input ds-text-field__input--success';
-        phoneError.style.display = 'none';
-      } else {
-        phoneInput.className = 'ds-text-field__input ds-text-field__input--error';
-        phoneError.style.display = 'block';
-      }
-    });
+    function validateName(inputId, errorId) {
+      const val = document.getElementById(inputId).value.trim();
+      const input = document.getElementById(inputId);
+      const error = document.getElementById(errorId);
+      if (val === '') { input.className = 'ds-text-field__input ds-text-field__input--error'; error.style.display = 'block'; }
+      else { input.className = 'ds-text-field__input ds-text-field__input--success'; error.style.display = 'none'; }
+    }
 
-    const firstnameInput = document.getElementById('firstname');
-    const firstnameError = document.getElementById('firstname-error');
+    function validateDropdown(selectId, errorId) {
+      const select = document.getElementById(selectId);
+      const error = document.getElementById(errorId);
+      if (!select.value) { select.className = 'ds-dropdown__box ds-dropdown__box--error'; error.style.display = 'block'; }
+      else { select.className = 'ds-dropdown__box'; error.style.display = 'none'; }
+    }
 
-    firstnameInput.addEventListener('blur', () => {
-      const val = firstnameInput.value.trim();
-      if (val === '') {
-        firstnameInput.className = 'ds-text-field__input ds-text-field__input--error';
-        firstnameError.style.display = 'block';
-      } else {
-        firstnameInput.className = 'ds-text-field__input ds-text-field__input--success';
-        firstnameError.style.display = 'none';
-      }
-    });
-
-    const lastnameInput = document.getElementById('lastname');
-    const lastnameError = document.getElementById('lastname-error');
-
-    lastnameInput.addEventListener('blur', () => {
-      const val = lastnameInput.value.trim();
-      if (val === '') {
-        lastnameInput.className = 'ds-text-field__input ds-text-field__input--error';
-        lastnameError.style.display = 'block';
-      } else {
-        lastnameInput.className = 'ds-text-field__input ds-text-field__input--success';
-        lastnameError.style.display = 'none';
-      }
-    });
-
-    const countrySelect = document.getElementById('country');
-    const countryError = document.getElementById('country-error');
-
-    countrySelect.addEventListener('blur', () => {
-      if (!countrySelect.value) {
-        countrySelect.className = 'ds-dropdown__box ds-dropdown__box--error';
-        countryError.style.display = 'block';
-      } else {
-        countrySelect.className = 'ds-dropdown__box';
-        countryError.style.display = 'none';
-      }
-    });
-
-    const deptSelect = document.getElementById('dept');
-    const deptError = document.getElementById('dept-error');
-
-    deptSelect.addEventListener('blur', () => {
-      if (!deptSelect.value) {
-        deptSelect.className = 'ds-dropdown__box ds-dropdown__box--error';
-        deptError.style.display = 'block';
-      } else {
-        deptSelect.className = 'ds-dropdown__box';
-        deptError.style.display = 'none';
-      }
-    });
+    document.getElementById('input-email').addEventListener('blur', validateEmail);
+    document.getElementById('input-phone').addEventListener('blur', validatePhone);
+    document.getElementById('input-firstname').addEventListener('blur', () => validateName('input-firstname', 'firstname-error'));
+    document.getElementById('input-lastname').addEventListener('blur', () => validateName('input-lastname', 'lastname-error'));
+    document.getElementById('input-country').addEventListener('blur', () => validateDropdown('input-country', 'country-error'));
+    document.getElementById('input-dept').addEventListener('blur', () => validateDropdown('input-dept', 'dept-error'));
   </script>
 
 </body>

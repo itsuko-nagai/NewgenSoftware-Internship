@@ -33,13 +33,17 @@ design-audit/
 ├── bin/
 │   └── cli.js                  # CLI entry point
 ├── src/
-│   └── validators/
-│       ├── htmlValidator.js    # Accessibility checks
-│       ├── scssValidator.js    # Design token compliance
-│       └── rtlValidator.js     # RTL property checks
+│   ├── validators/
+│   │   ├── htmlValidator.js    # Accessibility checks
+│   │   ├── scssValidator.js    # Design token compliance
+│   │   └── rtlValidator.js     # RTL property checks
+│   └── demo/                   # Sample HTML/SCSS for testing
 ├── scripts/
 │   └── convert-tokens.js      # Excel → JSON rule converter
 ├── rules-schema.json           # AJV validation schema for rules
+├── rules.json                  # Final rules with selectors
+├── rules-generated.json        # Rules output from converter
+├── rules-demo.json             # Sample rules for the demo
 ├── selector-map-sample.json    # Sample selector mapping config
 └── README.md
 ```
@@ -67,13 +71,13 @@ Example:
 node scripts/convert-tokens.js Dev_Tokens.xlsx rules-generated.json
 ```
 
-This outputs a `rules-generated.json` file with one rule object per component/element/state/property combination.
+This outputs a `rules-generated.json` file with one rule object per component/element/state/property combination. By default, the `Selector` field is empty.
 
 ### Step 2 — Define Selector Mapping
 
-The Excel does not contain CSS selectors. You must provide a `selector-map.json` that maps each Component + Element to its actual CSS selector in your codebase.
+The SCSS validator requires CSS selectors to find matching rules in your codebase. You must populate the `Selector` field for each rule. 
 
-Use `selector-map-sample.json` as a reference:
+You can use `selector-map-sample.json` as a reference for mapping Component + Element to CSS selectors:
 
 ```json
 [
@@ -85,13 +89,7 @@ Use `selector-map-sample.json` as a reference:
 ]
 ```
 
-The converter will automatically merge selectors into the rules if you pass the map:
-
-```bash
-node scripts/convert-tokens.js Dev_Tokens.xlsx rules.json --selector-map selector-map.json
-```
-
-Rules without a matching selector entry will have `"Selector": ""` and will be skipped by the SCSS validator.
+Currently, this mapping must be applied manually or by merging with a tool before running the audit. Rules with an empty `"Selector": ""` will be skipped by the SCSS validator.
 
 ### Step 3 — Run the Audit
 
@@ -105,6 +103,12 @@ Example:
 node bin/cli.js scan ./src --rules rules.json --schema rules-schema.json --out report.json
 ```
 
+To run against the included demo:
+
+```bash
+node bin/cli.js scan ./src/demo --rules rules-demo.json --schema rules-schema.json --out report.json
+```
+
 ---
 
 ## CLI Options
@@ -113,7 +117,7 @@ node bin/cli.js scan ./src --rules rules.json --schema rules-schema.json --out r
 |---|---|---|---|
 | `<targetDir>` | ✅ | — | Directory to scan recursively |
 | `--rules` | ✅ | — | Path to rules JSON array |
-| `--schema` | ✅ | — | Path to rules-schema.json for AJV validation |
+| `--schema` | ❌ | — | Path to rules-schema.json for AJV validation |
 | `--out` | ❌ | `./results.json` | Output path for the report |
 
 ---
@@ -146,6 +150,10 @@ Checks every `.scss` and `.css` file for:
 | `padding-right` | `padding-inline-end` |
 | `border-left` | `border-inline-start` |
 | `border-right` | `border-inline-end` |
+| `border-left-width` | `border-inline-start-width` |
+| `border-right-width` | `border-inline-end-width` |
+| `border-left-color` | `border-inline-start-color` |
+| `border-right-color` | `border-inline-end-color` |
 | `left` | `inset-inline-start` |
 | `right` | `inset-inline-end` |
 | `text-align: left` | `text-align: start` |

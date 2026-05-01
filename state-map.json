@@ -1,0 +1,14 @@
+{
+  "stateMapping": {
+    "Default": [""],
+    "Hover": [":hover"],
+    "Active": [":active"],
+    "Focus": [":focus", ":focus-visible"],
+    "Disabled": [":disabled", "[disabled]", ".is-disabled"],
+    "Error": [".is-error", ".error", ":invalid", "[aria-invalid=\"true\"]"],
+    "Selected": [".is-selected", ".selected", "[aria-selected=\"true\"]"],
+    "Expanded": [".is-expanded", ".expanded", "[aria-expanded=\"true\"]"],
+    "While Typing": [":focus"],
+    "After Search": [".has-value", ".is-filled"]
+  }
+}
