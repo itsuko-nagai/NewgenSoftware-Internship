@@ -1,6 +1,11 @@
 # design-audit
 
-A CLI-based static analysis tool that validates frontend code against a centralized design system. It checks HTML accessibility, SCSS design token compliance, and RTL (Right-to-Left) readiness.
+A CLI-based static analysis tool that acts as a **static analysis linter for design systems**. It validates frontend code against a centralized design system by checking HTML accessibility, SCSS design token compliance, and RTL (Right-to-Left) readiness.
+
+It does **not** run in a browser or execute JavaScript. It reads source files as text and analyzes them.
+
+### Key Design Philosophy: HTML-First
+The tool scans HTML before CSS. This allows it to build an **Active Selectors manifest**—a list of design system classes actually used in the HTML. The SCSS validator then only checks CSS for components that are actually being used. This avoids false positives and makes the tool context-aware.
 
 ---
 
@@ -31,22 +36,31 @@ npm link
 ```
 design-audit/
 ├── bin/
-│   └── cli.js                  # CLI entry point
+│   └── cli.js                        ← Entry point. The main CLI command.
 ├── src/
-│   ├── validators/
-│   │   ├── htmlValidator.js    # Accessibility checks
-│   │   ├── scssValidator.js    # Design token compliance
-│   │   └── rtlValidator.js     # RTL property checks
-│   └── demo/                   # Sample HTML/SCSS for testing
+│   ├── demo/
+│   │   ├── styles/                   ← Central CSS folder (auto-detected)
+│   │   │   ├── buttons.css           ← Button component styles (intentional violations)
+│   │   │   ├── cards.css             ← Card component styles
+│   │   │   ├── forms.css             ← Form/input/dropdown styles
+│   │   │   └── navigation.css        ← Navbar and tabs styles
+│   │   ├── page1-buttons.html        ← Demo page 1: Buttons + Tabs
+│   │   ├── page2-forms.html          ← Demo page 2: Forms + Validation
+│   │   └── page3-cards.html          ← Demo page 3: Cards
+│   └── validators/
+│       ├── htmlValidator.js          ← Validates HTML files
+│       ├── scssValidator.js          ← Validates CSS/SCSS against rules
+│       └── rtlValidator.js           ← Checks RTL compliance
 ├── scripts/
-│   └── convert-tokens.js      # Excel → JSON rule converter
-├── rules-schema.json           # AJV validation schema for rules
-├── rules.json                  # Final rules with selectors
-├── rules-generated.json        # Rules output from converter
-├── rules-demo.json             # Sample rules for the demo
-├── selector-map-sample.json    # Sample selector mapping config
-├── state-map.json              # State suffix mapping (e.g. :hover, .is-disabled)
-└── README.md
+│   └── convert-tokens.js             ← Converts Excel → JSON rules
+├── package.json                      ← Project config + dependencies
+├── rules-schema.json                 ← AJV schema for validating rules format
+├── rules-demo.json                   ← 10 hand-written rules for demo
+├── rules-generated.json              ← 2,083 rules generated from Excel
+├── selector-map-sample.json          ← Template for mapping components to CSS selectors
+├── state-map.json                    ← Maps rule states to CSS selector patterns
+├── report.json                       ← Output report (generated on each run)
+└── README.md                         ← Documentation
 ```
 
 ---
@@ -55,12 +69,7 @@ design-audit/
 
 ### Step 1 — Convert Design Tokens from Excel
 
-The design source of truth is an Excel file with this column structure:
-
-| Component Name | Element | Property | Default | Hover | Active | Disabled | Error |
-|---|---|---|---|---|---|---|---|
-
-Run the converter:
+The design source of truth is an Excel file. The converter script handles merged cells (fill-down logic) and filters out non-CSS data.
 
 ```bash
 node scripts/convert-tokens.js <path-to-excel> rules-generated.json
@@ -72,25 +81,17 @@ Example:
 node scripts/convert-tokens.js Dev_Tokens.xlsx rules-generated.json
 ```
 
-This outputs a `rules-generated.json` file with one rule object per component/element/state/property combination. By default, the `Selector` field is empty.
-
 ### Step 2 — Define Selector Mapping
 
-The SCSS validator requires CSS selectors to find matching rules in your codebase. You must populate the `Selector` field for each rule. 
+The SCSS validator requires CSS selectors to find matching rules in your codebase. You can use `selector-map-sample.json` as a reference for mapping Component + Element to CSS selectors.
 
-You can use `selector-map-sample.json` as a reference for mapping Component + Element to CSS selectors:
+Apply the mapping by running the converter with the `--selector-map` flag:
 
-```json
-[
-  {
-    "Component": "Text Field",
-    "Element": "Label",
-    "Selector": ".ds-text-field__label"
-  }
-]
+```bash
+node scripts/convert-tokens.js Dev_Tokens.xlsx rules.json --selector-map selector-map.json
 ```
 
-Currently, this mapping must be applied manually or by merging with a tool before running the audit. Rules with an empty `"Selector": ""` will be skipped by the SCSS validator.
+Rules with an empty `"Selector": ""` will be skipped by the SCSS validator.
 
 ### Step 3 — Run the Audit
 
@@ -105,7 +106,7 @@ node bin/cli.js scan ./src/demo --rules rules-demo.json --schema rules-schema.js
 ```
 
 #### Style Auto-Detection
-The CLI automatically attempts to find your stylesheets. It looks for `styles/`, `css/`, or `scss/` folders within the target directory or its parent. If found, it validates the rules against all `.css` and `.scss` files in those folders. If no such folders are found, it scans all styles in the target directory recursively.
+The CLI automatically looks for `styles/`, `css/`, or `scss/` subfolders in the target directory. If found, it uses all CSS/SCSS files inside as the central stylesheet. If not found, it scans all styles in the target directory recursively.
 
 ---
 
@@ -125,22 +126,26 @@ The CLI automatically attempts to find your stylesheets. It looks for `styles/`,
 ## Validators
 
 ### HTML Validator
-Checks every `.html` file for:
-- Missing `lang` attribute on `<html>`
-- Missing `alt` attribute on `<img>` elements
-- Inputs with no associated label, `aria-label`, or `aria-labelledby`
+**The Scout:**
+- Scans HTML first to extract every class starting with `ds-`.
+- Builds the **Active Selectors manifest** for the SCSS validator.
+- Flags classes used in HTML that are not defined in the design tokens (`invalid-design-class`).
+- Performs accessibility checks:
+  - Missing `lang` attribute on `<html>`.
+  - Missing `alt` attribute on `<img>`.
+  - Inputs without associated labels (`aria-label`, `aria-labelledby`, or `<label for="">`).
 
 ### SCSS Validator
-For each rule with a non-empty `Selector`:
-- Finds matching CSS rules in `.scss` and `.css` files
-- Compares the actual property value against the expected value from the design tokens
-- Supports `var(--token-name, #fallback)` — accepts both the token and the fallback hex
-- Reports `design-token-mismatch` when values differ
-- Reports `missing-property` when the property is not found in the selector
+**The Engine:**
+- Uses PostCSS to build an Abstract Syntax Tree (AST) of your stylesheets.
+- Only validates selectors found in the Active Selectors manifest.
+- Maps human-readable states (Hover, Error, etc.) to CSS patterns using `state-map.json`.
+- Compares actual values against expected tokens, supporting `var(--token, #fallback)` syntax.
+- **Hex Swatches:** Adds `foundHex` and `expectedHex` fields to the report, allowing VS Code to render visual color swatches for violations.
 
 ### RTL Validator
-Checks every `.scss` and `.css` file for:
-- Directional properties that should use logical equivalents
+**Logical Property Checker:**
+Checks every stylesheet for directional properties and suggests modern CSS Logical Properties.
 
 | Found | Suggestion |
 |---|---|
@@ -150,10 +155,6 @@ Checks every `.scss` and `.css` file for:
 | `padding-right` | `padding-inline-end` |
 | `border-left` | `border-inline-start` |
 | `border-right` | `border-inline-end` |
-| `border-left-width` | `border-inline-start-width` |
-| `border-right-width` | `border-inline-end-width` |
-| `border-left-color` | `border-inline-start-color` |
-| `border-right-color` | `border-inline-end-color` |
 | `left` | `inset-inline-start` |
 | `right` | `inset-inline-end` |
 | `text-align: left` | `text-align: start` |
@@ -179,12 +180,6 @@ The report is a deterministic JSON file:
   },
   "issues": [
     {
-      "file": "src/components/form.html",
-      "type": "accessibility",
-      "severity": "error",
-      "message": "<html> element missing lang attribute"
-    },
-    {
       "file": "src/components/text-field.scss",
       "type": "design-token-mismatch",
       "severity": "error",
@@ -195,6 +190,8 @@ The report is a deterministic JSON file:
       "property": "color",
       "expected": "var(--Text-Primary, #001111)",
       "found": "#FF0000",
+      "foundHex": "#FF0000",
+      "expectedHex": "#001111",
       "message": "[Text Field / Label] \"color\" expected \"var(--Text-Primary, #001111)\", found \"#FF0000\""
     }
   ]
@@ -206,8 +203,10 @@ The report is a deterministic JSON file:
 | Type | Severity | Description |
 |---|---|---|
 | `accessibility` | error / warning | HTML accessibility violation |
+| `invalid-design-class` | warning | Class starting with `ds-` used in HTML but not in tokens |
 | `design-token-mismatch` | error | CSS value differs from design token |
 | `missing-property` | error | Expected CSS property not found in selector |
+| `missing-state` | error | No CSS found for a required state (e.g., hover, error) |
 | `rtl-directional-property` | warning | Directional CSS property should use logical equivalent |
 | `rtl-text-align` | warning | `text-align: left/right` should use `start/end` |
 
@@ -248,6 +247,18 @@ Rules are validated against `rules-schema.json` using AJV. Each rule object must
 | `State` | string | One of: Default, Hover, Active, Disabled, Error |
 | `Property` | string | CSS property name |
 | `Value` | string | Expected value from design tokens |
+
+---
+
+## Troubleshooting
+
+| Error | Cause | Fix |
+|---|---|---|
+| `ERR_UNSUPPORTED_DIR_IMPORT` | Importing a folder path in ESM | Use explicit `.js` extension in imports |
+| `does not provide export named 'default'` for glob | glob v10 has no default export | `import { glob } from 'glob'` |
+| `does not provide export named 'default'` for cheerio | cheerio v1 ESM | `import * as cheerio from 'cheerio'` |
+| `XLSX.readFile is not a function` | Wrong XLSX import style | `import XLSX from 'xlsx'` (default import) |
+| `value.trim is not a function` | Excel numeric cells | `String(value).trim()` |
 
 ---
 
